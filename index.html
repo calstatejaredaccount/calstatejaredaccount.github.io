@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World - Future Interface</title>
+    <title>CyberDefense Central - Security Operations</title>
     <style>
         * {
             margin: 0;
@@ -12,208 +12,286 @@
         }
 
         body {
-            font-family: 'Courier New', monospace;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-            color: #00ff88;
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Animated background grid */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0,255,136,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,255,136,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: grid-move 20s linear infinite;
-            z-index: 0;
-        }
-
-        @keyframes grid-move {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+            font-size: 14px;
         }
 
         .container {
-            position: relative;
-            z-index: 1;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            padding: 0 20px;
         }
 
+        /* Header */
         header {
-            text-align: center;
-            padding: 40px 0;
-            border-bottom: 2px solid #00ff88;
-            margin-bottom: 40px;
-            position: relative;
+            border-bottom: 1px solid #21262d;
+            padding: 16px 0;
+            background-color: #010409;
         }
 
-        .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-shadow: 0 0 20px #00ff88;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        .subtitle {
-            font-size: 1rem;
-            margin-top: 10px;
-            color: #66ccaa;
-        }
-
-        main {
-            flex: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+        .header-content {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            color: #f0f6fc;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #238636;
+        }
+
+        /* Main Content */
+        main {
+            padding: 32px 0;
+        }
+
         .welcome-section {
-            padding: 30px;
-            border: 2px solid #00ff88;
-            border-radius: 10px;
-            background: rgba(0, 255, 136, 0.05);
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 48px;
         }
 
-        .welcome-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00ff88, transparent);
-            animation: scan 3s infinite;
+        .welcome-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: #f0f6fc;
+            margin-bottom: 8px;
         }
 
-        @keyframes scan {
-            0% { left: -100%; }
-            100% { left: 100%; }
+        .welcome-subtitle {
+            font-size: 16px;
+            color: #8b949e;
+            margin-bottom: 24px;
         }
 
-        .hello-world {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 20px;
-            text-shadow: 0 0 15px #00ff88;
+        .system-info {
+            background-color: #161b22;
+            border: 1px solid #21262d;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 32px;
         }
 
-        .description {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #88ddbb;
-        }
-
-        .features-grid {
+        .info-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
         }
 
-        .feature-card {
-            padding: 20px;
-            border: 1px solid #44aa77;
-            border-radius: 8px;
-            background: rgba(0, 255, 136, 0.02);
-            text-align: center;
-            transition: all 0.3s ease;
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
         }
 
-        .feature-card:hover {
-            border-color: #00ff88;
-            background: rgba(0, 255, 136, 0.08);
-            transform: translateY(-5px);
+        .info-label {
+            color: #8b949e;
+            font-size: 13px;
         }
 
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            display: block;
+        .info-value {
+            color: #f0f6fc;
+            font-weight: 500;
         }
 
-        .cta-section {
-            text-align: center;
-            margin-top: 40px;
-            padding: 30px;
-            border: 2px dashed #00ff88;
-            border-radius: 10px;
+        .status-ok {
+            color: #238636;
         }
 
-        .cta-button {
-            background: linear-gradient(45deg, #00ff88, #44aa77);
-            color: #0a0a0a;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .status-warning {
+            color: #f85149;
+        }
+
+        /* Security Dashboard */
+        .dashboard-section {
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #f0f6fc;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #21262d;
+            padding-bottom: 8px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .metric-card {
+            background-color: #161b22;
+            border: 1px solid #21262d;
+            border-radius: 6px;
+            padding: 16px;
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .metric-title {
+            font-size: 13px;
+            color: #8b949e;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
-        .cta-button:hover {
-            background: linear-gradient(45deg, #44aa77, #00ff88);
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);
+        .metric-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #f0f6fc;
         }
 
-        footer {
+        .metric-description {
+            font-size: 12px;
+            color: #8b949e;
+            margin-top: 4px;
+        }
+
+        /* Alert Section */
+        .alerts-section {
+            margin-bottom: 48px;
+        }
+
+        .alert-item {
+            background-color: #161b22;
+            border: 1px solid #21262d;
+            border-left: 3px solid #238636;
+            border-radius: 0 6px 6px 0;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .alert-item.warning {
+            border-left-color: #f85149;
+        }
+
+        .alert-content {
+            flex: 1;
+        }
+
+        .alert-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #f0f6fc;
+            margin-bottom: 2px;
+        }
+
+        .alert-time {
+            font-size: 12px;
+            color: #8b949e;
+        }
+
+        .alert-status {
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            background-color: #238636;
+            color: #f0f6fc;
+        }
+
+        .alert-status.warning {
+            background-color: #f85149;
+        }
+
+        /* Quick Actions */
+        .actions-section {
+            margin-bottom: 48px;
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .action-button {
+            background-color: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 16px;
             text-align: center;
-            padding: 20px 0;
-            border-top: 1px solid #44aa77;
-            margin-top: 40px;
-            color: #66ccaa;
+            text-decoration: none;
+            color: #f0f6fc;
+            transition: all 0.2s ease;
+            cursor: pointer;
         }
 
-        .terminal-line {
-            font-family: 'Courier New', monospace;
-            color: #00ff88;
-            margin: 5px 0;
+        .action-button:hover {
+            background-color: #30363d;
+            border-color: #8b949e;
         }
 
-        .terminal-line::before {
-            content: '> ';
-            color: #44aa77;
+        .action-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 4px;
         }
 
+        .action-description {
+            font-size: 12px;
+            color: #8b949e;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #21262d;
+            padding: 24px 0;
+            text-align: center;
+            color: #8b949e;
+            font-size: 12px;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            main {
+            .header-content {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .welcome-title {
+                font-size: 24px;
+            }
+
+            .info-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
             }
-            
-            .features-grid {
+
+            .metrics-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .hello-world {
-                font-size: 2rem;
-            }
-            
-            .logo {
-                font-size: 2rem;
+
+            .actions-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -221,60 +299,145 @@
 <body>
     <div class="container">
         <header>
-            <div class="logo">JARED'S WEBSITE! THE ONLY SITE YOULL EVER NEED! </div>
-            <div class="subtitle">Advanced Web Interface v2.1.0</div>
+            <div class="header-content">
+                <div class="logo">CyberDefense Central</div>
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span>All Systems Operational</span>
+                </div>
+            </div>
         </header>
 
         <main>
-            <div class="welcome-section">
-                <h1 class="hello-world">Hello, World!</h1>
-                <p class="description">
-                    Welcome to the future of web development. This wireframe demonstrates 
-                    modern design principles with a futuristic aesthetic, perfect for 
-                    showcasing next-generation applications and interfaces.
+            <section class="welcome-section">
+                <h1 class="welcome-title">Security Operations Dashboard</h1>
+                <p class="welcome-subtitle">
+                    Centralized monitoring and management for enterprise cybersecurity infrastructure
                 </p>
                 
-                <div class="terminal-line">System initialized successfully</div>
-                <div class="terminal-line">Loading user interface...</div>
-                <div class="terminal-line">Welcome protocol activated</div>
-            </div>
+                <div class="system-info">
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Last Security Scan</span>
+                            <span class="info-value status-ok">2 minutes ago</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">System Version</span>
+                            <span class="info-value">v3.2.1</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Active Endpoints</span>
+                            <span class="info-value">1,247</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Threat Level</span>
+                            <span class="info-value status-ok">Low</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            <div class="features-grid">
-                <div class="feature-card">
-                    <span class="feature-icon">⚡</span>
-                    <h3>High Performance</h3>
-                    <p>Lightning-fast loading and smooth animations</p>
+            <section class="dashboard-section">
+                <h2 class="section-title">Security Metrics</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Threats Blocked</span>
+                        </div>
+                        <div class="metric-value status-ok">99.7%</div>
+                        <div class="metric-description">847 threats blocked in last 24h</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Network Uptime</span>
+                        </div>
+                        <div class="metric-value status-ok">99.98%</div>
+                        <div class="metric-description">7 days, 23 hours, 58 minutes</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Security Score</span>
+                        </div>
+                        <div class="metric-value">A+</div>
+                        <div class="metric-description">All critical controls operational</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Incidents</span>
+                        </div>
+                        <div class="metric-value status-warning">2</div>
+                        <div class="metric-description">Minor incidents under investigation</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="alerts-section">
+                <h2 class="section-title">Recent Activity</h2>
+                
+                <div class="alert-item">
+                    <div class="alert-content">
+                        <div class="alert-title">Firewall Rules Updated</div>
+                        <div class="alert-time">5 minutes ago</div>
+                    </div>
+                    <span class="alert-status">Resolved</span>
                 </div>
                 
-                <div class="feature-card">
-                    <span class="feature-icon">🔮</span>
-                    <h3>Future-Ready</h3>
-                    <p>Built with tomorrow's technology in mind</p>
+                <div class="alert-item warning">
+                    <div class="alert-content">
+                        <div class="alert-title">Unusual Login Pattern Detected</div>
+                        <div class="alert-time">12 minutes ago</div>
+                    </div>
+                    <span class="alert-status warning">Investigating</span>
                 </div>
                 
-                <div class="feature-card">
-                    <span class="feature-icon">🌐</span>
-                    <h3>Universal Access</h3>
-                    <p>Accessible across all devices and platforms</p>
+                <div class="alert-item">
+                    <div class="alert-content">
+                        <div class="alert-title">Endpoint Protection Update Complete</div>
+                        <div class="alert-time">28 minutes ago</div>
+                    </div>
+                    <span class="alert-status">Complete</span>
                 </div>
                 
-                <div class="feature-card">
-                    <span class="feature-icon">🛡️</span>
-                    <h3>Secure Design</h3>
-                    <p>Advanced security protocols integrated</p>
+                <div class="alert-item">
+                    <div class="alert-content">
+                        <div class="alert-title">Weekly Vulnerability Scan Started</div>
+                        <div class="alert-time">1 hour ago</div>
+                    </div>
+                    <span class="alert-status">In Progress</span>
                 </div>
-            </div>
+            </section>
+
+            <section class="actions-section">
+                <h2 class="section-title">Quick Actions</h2>
+                <div class="actions-grid">
+                    <div class="action-button" onclick="alert('Launching security scan...')">
+                        <div class="action-title">Run Security Scan</div>
+                        <div class="action-description">Perform immediate threat assessment</div>
+                    </div>
+                    
+                    <div class="action-button" onclick="alert('Opening incident reports...')">
+                        <div class="action-title">View Incident Reports</div>
+                        <div class="action-description">Review detailed security incidents</div>
+                    </div>
+                    
+                    <div class="action-button" onclick="alert('Accessing policy management...')">
+                        <div class="action-title">Manage Policies</div>
+                        <div class="action-description">Configure security policies</div>
+                    </div>
+                    
+                    <div class="action-button" onclick="alert('Opening threat intelligence...')">
+                        <div class="action-title">Threat Intelligence</div>
+                        <div class="action-description">Latest security threat data</div>
+                    </div>
+                </div>
+            </section>
         </main>
 
-        <div class="cta-section">
-            <h2>Ready to Explore?</h2>
-            <p>Dive into the future of web technology</p>
-            <button class="cta-button" onclick="alert('Hello from the future! 🚀')">Initialize System</button>
-        </div>
-
         <footer>
-            <p>&copy; 2025 Future.Tech | Wireframe Demo | Class Project</p>
-            <p>Built with HTML, CSS, and futuristic vision</p>
+            <p>&copy; 2025 CyberDefense Central | Enterprise Security Platform | SOC Operations</p>
         </footer>
     </div>
 </body>
